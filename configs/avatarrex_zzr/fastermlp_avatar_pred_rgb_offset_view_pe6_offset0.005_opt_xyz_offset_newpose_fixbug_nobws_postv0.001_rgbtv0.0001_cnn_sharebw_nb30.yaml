@@ -1,0 +1,118 @@
+mode: train
+train:
+  dataset: MvRgbDatasetAvatarReX
+  data:
+    subject_name: avatarrex_zzr_compact
+    data_dir: ./data/avatarrex/zzr_compact
+    pos_map_mode: compact
+    frame_range: &id001
+    - 0
+    - 2001
+    - 1
+    used_cam_ids:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 14
+    - 15
+    load_smpl_pos_map: true
+  pretrained_dir: null
+  net_ckpt_dir: ./results/avatarrex_zzr_compact/avatar
+  prev_ckpt: null
+  ckpt_interval:
+    epoch: 10
+    batch: 50000
+  eval_interval: 1000
+  eval_training_ids:
+  - 211
+  - 1
+  eval_testing_ids:
+  - 500
+  - 1
+  eval_img_factor: 1.0
+  lr_init: 0.0005
+  loss_weight:
+    l1: 1.0
+    lpips: 0.1
+    offset: 0.005
+    scaling: 1.0
+    cano_offset: 0.
+    pos_tv: 0.001
+    rgb_tv: 0.0001
+  finetune_color: false
+  batch_size: 1
+  num_workers: 8
+  random_bg_color: true
+  gs_lr_scale: 1.0
+  iteration_lpips_random_patch: 200000
+  iteration_lpips_start: 2000
+  pretrain_iter_num: 2000
+  # lr_xyz: 0.00016
+  lr_offset: 0.001
+  lr_opacity: 0.0005
+  lr_scale: 0.0005
+  lr_rotation: 0.0005
+  lr_features_dc: 0.0005
+  lr_features_rest: 0.0005
+test:
+  dataset: MvRgbDatasetAvatarReX
+  data:
+    data_dir: ./data/avatarrex/zzr_compact
+    frame_range: [0, 500]
+    subject_name: avatarrex_zzr_compact
+  # pose_data:
+  #   # data_path: ./data/pose/AMASS/CMU/06/06_13_poses.npz
+  #   # data_path: ./data/pose/AMASS/CMU/06/06_14_poses.npz
+  #   # data_path: ./data/pose/AMASS/CMU/02/02_08_poses.npz
+  #   # data_path: ./data/pose/AMASS/CMU/02/02_09_poses.npz
+  #   # data_path: ./data/pose/AMASS/CMU/11/11_01_poses.npz
+  #   data_path: ./data/pose/AMASS/CMU/15/15_13_poses.npz
+  #   # data_path: ./data/pose/AMASS/CMU/144/144_28_poses.npz
+  #   # data_path: ./data/pose/AMASS/CMU/131/131_03_poses.npz
+  #   # data_path: ./data/pose/AMASS/MPI_Mosh/00093/misc_poses.npz
+  #   # data_path: ./data/pose/AMASS/MPI_Mosh/50004/misc_poses.npz
+  #   # data_path: ./data/pose/AMASS/MPI_Mosh/00093/irish_dance_poses.npz
+  #   # data_path: ./data/pose/AMASS/MPI_Mosh/00059/misc_poses.npz
+  #   # data_path: ./data/pose/AMASS/CMU/144/144_05_poses.npz
+  #   # data_path: ./data/pose/AMASS/CMU/10/10_05_poses.npz
+  #   # frame_range: [0, 500, 4]
+  #   frame_interval: 4
+  view_setting: camera
+  render_view_idx: 1
+  global_orient: true
+  img_scale: 1.0
+  save_mesh: false
+  render_skeleton: false
+  save_tex_map: false
+  save_cano_offset: false
+  save_ply: false
+  save_cano_pts: false
+  render_gaussian_only: false
+  n_pca: 20
+  sigma_pca: 2.0
+  prev_ckpt: ./results/avatarrex_zzr_compact/avatar/batch_700000
+model:
+  with_viewdirs: true
+  random_style: false
+  pred_color_offset: true
+  multires_pe: 6
+  max_sh_degree: 0
+  add_global: true
+  fix_cano_xyz: false
+  opt_xyz_offset: true
+  geo_bw_size: 64
+  rgb_bw_size: 64
+  geo_num_basis: 30
+  rgb_num_basis: 30
+  bw_scale: -1.0
+  use_cnn: true
+  share_blend_weight: true

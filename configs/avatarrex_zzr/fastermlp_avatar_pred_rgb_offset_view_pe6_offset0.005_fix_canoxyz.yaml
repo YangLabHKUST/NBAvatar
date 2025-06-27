@@ -1,0 +1,86 @@
+mode: train
+train:
+  dataset: MvRgbDatasetAvatarReX
+  data:
+    subject_name: avatarrex_zzr_compact
+    data_dir: ./data/avatarrex/zzr_compact
+    pos_map_mode: compact
+    frame_range: &id001
+    - 0
+    - 2001
+    - 1
+    used_cam_ids:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 14
+    - 15
+    load_smpl_pos_map: true
+  pretrained_dir: null
+  net_ckpt_dir: ./results/avatarrex_zzr_compact/avatar
+  prev_ckpt: null
+  ckpt_interval:
+    epoch: 10
+    batch: 50000
+  eval_interval: 1000
+  eval_training_ids:
+  - 211
+  - 1
+  eval_testing_ids:
+  - 500
+  - 1
+  eval_img_factor: 1.0
+  lr_init: 0.0005
+  loss_weight:
+    l1: 1.0
+    lpips: 0.1
+    offset: 0.005
+    scaling: 0.1
+    cano_offset: 0.01
+  finetune_color: false
+  batch_size: 1
+  num_workers: 8
+  random_bg_color: true
+  gs_lr_scale: 2.0
+test:
+  dataset: MvRgbDatasetAvatarReX
+  data:
+    data_dir: ./data/avatarrex/zzr_compact
+    frame_range: [923, 924]
+    subject_name: avatarrex_zzr_compact
+  # pose_data:
+  #   data_path: ./data/pose/thuman4/pose_00.npz
+  #   frame_range: [2000, 2500]
+#    data_path: Z:/Data/Pose/AMASS/CMU/06/06_13_poses.npz
+#    data_path: Z:/Data/Pose/AMASS/CMU/10/10_05_poses.npz
+#    frame_interval: 4
+  view_setting: camera
+  render_view_idx: 1
+  global_orient: true
+  img_scale: 1.0
+  save_mesh: false
+  render_skeleton: false
+  save_tex_map: false
+  save_cano_offset: false
+  save_ply: false
+  render_gaussian_only: false
+  n_pca: 20
+  sigma_pca: 2.0
+  prev_ckpt: ./results/avatarrex_zzr_compact/avatar/batch_700000
+model:
+  with_viewdirs: true
+  random_style: false
+  pred_color_offset: true
+  multires_pe: 6
+  max_sh_degree: 0
+  add_global: true
+  fix_cano_xyz: true

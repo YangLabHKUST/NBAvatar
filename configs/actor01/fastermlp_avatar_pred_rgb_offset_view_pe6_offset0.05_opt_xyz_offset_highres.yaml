@@ -1,0 +1,87 @@
+mode: train
+train:
+  dataset: MvRgbDatasetActorsHQ
+  data:
+    subject_name: actor01_compact
+    data_dir: ./data/actorshq/Actor01/Sequence1_compact
+    pos_map_mode: compact
+    frame_range:
+    - 48
+    - 2177
+    - 1
+    used_cam_ids: [4, 5, 6, 7, 20, 21, 22, 23, 36, 37, 38, 39, 52, 53, 54, 55, 76, 77, 78, 79, 92, 93, 94, 95, 108, 109, 110, 111, 125, 126, 130, 131, 134, 135, 138, 139, 142, 143, 146, 147, 150, 151, 154, 155, 158, 159]
+    load_smpl_pos_map: true
+    filter_repreated_frames: true
+  pretrained_dir: null
+  net_ckpt_dir: ./results/actor01_compact/avatar
+  prev_ckpt: null
+  ckpt_interval:
+    epoch: 10
+    batch: 50000
+  eval_interval: 1000
+  eval_training_ids: [481, 4]
+  eval_testing_ids: [710, 126]
+  eval_img_factor: 1.0
+  lr_init: 0.0005
+  loss_weight:
+    l1: 1.0
+    lpips: 0.1
+    offset: 0.005
+    scaling: 1.0
+    cano_offset: 0.
+  finetune_color: false
+  batch_size: 1
+  num_workers: 8
+  random_bg_color: true
+  gs_lr_scale: 3.0
+  iteration_lpips_random_patch: 200000
+  iteration_lpips_start: 2000
+  pretrain_iter_num: 2000
+  # lr_xyz: 0.00016
+  lr_offset: 0.001
+  lr_opacity: 0.0005
+  lr_scale: 0.0005
+  lr_rotation: 0.0005
+  lr_features_dc: 0.0005
+  lr_features_rest: 0.0005
+test:
+  dataset: MvRgbDatasetActorsHQ
+  data:
+    data_dir: ./data/actorshq/Actor01/Sequence1_compact
+    frame_range: [48, 548]
+    subject_name: actor01_compact
+  # pose_data:
+  #   data_path: ./data/pose/thuman4/pose_00.npz
+  #   frame_range: [2000, 2500]
+#    data_path: Z:/Data/Pose/AMASS/CMU/06/06_13_poses.npz
+#    data_path: Z:/Data/Pose/AMASS/CMU/10/10_05_poses.npz
+#    frame_interval: 4
+  view_setting: camera
+  render_view_idx: 126
+  global_orient: true
+  img_scale: 1.0
+  save_mesh: false
+  render_skeleton: false
+  save_tex_map: false
+  save_cano_offset: false
+  save_ply: false
+  render_gaussian_only: false
+  n_pca: 20
+  sigma_pca: 2.0
+  prev_ckpt: ./results/actor01_compact/avatar/batch_800000
+model:
+  with_viewdirs: true
+  random_style: false
+  pred_color_offset: true
+  multires_pe: 6
+  max_sh_degree: 0
+  add_global: true
+  fix_cano_xyz: false
+  opt_xyz_offset: true
+  faster: true
+  geo_bw_size: 128
+  geo_feature_size: 256
+  num_basis: 25
+  geo_mlp_inter: [128, 64]
+  rgb_mlp_inter: [128, 64]
+  faster: true
