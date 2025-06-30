@@ -54,7 +54,7 @@ def process_folder(folder_path):
                     if is_valid:
                         valid_images.append(file_path)
                     else:
-                        invalid_images.append((file_path, msg))
+                        invalid_images.append(file_path)
                 pbar.update(1)
         
     return {

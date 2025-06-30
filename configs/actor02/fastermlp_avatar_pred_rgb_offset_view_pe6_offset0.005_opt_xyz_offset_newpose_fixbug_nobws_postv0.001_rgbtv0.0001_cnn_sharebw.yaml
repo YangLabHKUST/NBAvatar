@@ -49,7 +49,7 @@ test:
   dataset: MvRgbDatasetActorsHQ
   data:
     data_dir: ./data/actorshq/Actor02/Sequence1_compact
-    frame_range: [60, 560]
+    frame_range: [60, 2060]
     subject_name: actor02_compact
   # pose_data:
   #   # data_path: ./data/pose/AMASS/CMU/06/06_13_poses.npz

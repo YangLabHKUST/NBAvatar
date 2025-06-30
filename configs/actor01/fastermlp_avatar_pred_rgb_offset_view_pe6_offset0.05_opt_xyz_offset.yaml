@@ -50,10 +50,11 @@ test:
     frame_range: [48, 548]
     subject_name: actor01_compact
   pose_data:
-    data_path: ./data/pose/AMASS/MPI_Mosh/00059/misc_poses.npz
+    # data_path: ./data/pose/AMASS/MPI_Mosh/00059/misc_poses.npz
+    data_path: ./data/pose/AMASS/MPI_Mosh/50004/misc_poses.npz
     # frame_range: [2000, 2500]
     frame_interval: 4
-  view_setting: free
+  view_setting: moving
   render_view_idx: 126
   global_orient: true
   img_scale: 1.0

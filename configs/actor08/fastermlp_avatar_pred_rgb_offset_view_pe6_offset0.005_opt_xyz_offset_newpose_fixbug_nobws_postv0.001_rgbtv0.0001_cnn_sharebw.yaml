@@ -51,7 +51,7 @@ test:
     data_dir: ./data/actorshq/Actor08/Sequence1_compact
     frame_range: [63, 563]
     subject_name: actor08_compact
-  pose_data:
+  # pose_data:
     # data_path: ./data/pose/AMASS/CMU/06/06_13_poses.npz
   #   # data_path: ./data/pose/AMASS/CMU/06/06_14_poses.npz
     # data_path: ./data/pose/AMASS/CMU/02/02_08_poses.npz
@@ -65,10 +65,10 @@ test:
     # data_path: ./data/pose/AMASS/MPI_Mosh/00093/irish_dance_poses.npz
     # data_path: ./data/pose/AMASS/MPI_Mosh/00059/misc_poses.npz
   #   # data_path: ./data/pose/AMASS/CMU/144/144_05_poses.npz
-    data_path: ./data/pose/AMASS/CMU/10/10_05_poses.npz
+    # data_path: ./data/pose/AMASS/CMU/10/10_05_poses.npz
   #   # frame_range: [0, 500, 4]
-    frame_interval: 4
-  view_setting: moving
+    # frame_interval: 4
+  view_setting: camera
   render_view_idx: 126
   global_orient: true
   img_scale: 1.0
